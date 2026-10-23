@@ -26,7 +26,6 @@ export async function sendMessage(
 }
 
 // Получение уведомлений
-// Возвращает null, если новых уведомлений нет
 export async function receiveNotification(
 	creds: Credentials,
 ): Promise<ReceiveNotificationResponse | null> {

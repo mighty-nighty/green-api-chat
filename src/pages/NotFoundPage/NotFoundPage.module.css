@@ -1,0 +1,13 @@
+.noPageContainer {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.noPageMessage {
+	margin-bottom: 20px;
+	font-weight: 600;
+	font-size: 22px;
+	color: #22a26d;
+}

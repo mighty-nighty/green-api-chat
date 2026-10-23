@@ -1,0 +1,35 @@
+.chatList {
+	flex: 1;
+	overflow-y: auto;
+}
+.chatItem {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+	padding: 10px 16px;
+	background: none;
+	border: none;
+	text-align: left;
+	align-items: center;
+}
+.chatItem:hover {
+	background: #f0f2f5;
+}
+.chatItem.active {
+	background: #e3e7f3;
+}
+.chatItemInfo {
+	overflow: hidden;
+}
+.muted {
+	color: #6e94ac;
+	font-size: 13px;
+}
+.chatItemInfo .muted {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.pad16 {
+	padding: 16px;
+}

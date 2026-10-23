@@ -1,6 +1,7 @@
 import React from "react"
+import styles from './ErrorBoundary.module.css'
 
-interface Props {
+interface ErrorBoundaryProps {
 	children: React.ReactNode
 }
 
@@ -9,8 +10,11 @@ interface ErrorBoundaryState {
 	error: Error | null
 }
 
-export class ErrorBoundary extends React.Component<Props, ErrorBoundaryState> {
-	constructor(props: Props) {
+export class ErrorBoundary extends React.Component<
+	ErrorBoundaryProps,
+	ErrorBoundaryState
+> {
+	constructor(props: ErrorBoundaryProps) {
 		super(props)
 		this.state = { hasError: false, error: null }
 	}
@@ -26,11 +30,11 @@ export class ErrorBoundary extends React.Component<Props, ErrorBoundaryState> {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<div className='error-boundary-container'>
+				<div className={styles.errorBoundaryContainer}>
 					<h2>Что-то пошло не так &#128546;</h2>
 					<p>{this.state.error?.message}</p>
 					<button
-						className='error-boundary-btn'
+						className={styles.errorBoundaryBtn}
 						onClick={() => this.setState({ hasError: false, error: null })}
 					>
 						Попробовать снова

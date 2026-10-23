@@ -5,36 +5,22 @@ export interface Credentials {
 	apiTokenInstance: string
 }
 
-// export interface HystoryMessage {
-// 	chatId: string
-// 	deletedMessageId: string
-// 	editedMessageId: string
-// 	idMessage: string
-// 	isDeleted: boolean
-// 	isEdited: boolean
-// 	sendByApi: boolean
-// 	statusMessage: string
-// 	textMessage: string
-// 	timestamp: number
-// 	type: string
-// 	typeMessage: string
-// }
-
-export type Chat = Pick<Contact, 'name' | 'type'> & { chatId: string; phone: string; }
-
-export type Message = {
-  chatId: string
-  idMessage: string
-  isDeleted: boolean
-  isEdited: boolean
-  sendByApi: boolean
-  statusMessage: string
-  textMessage: string
-  timestamp: number // миллисекунды
-  type: string
+export type Chat = Pick<Contact, 'name' | 'type'> & {
+	chatId: string
+	phone: string
 }
 
-export type Chats = Record<string, Chat>
+export type Message = {
+	chatId: string
+	idMessage: string
+	isDeleted: boolean
+	isEdited: boolean
+	sendByApi: boolean
+	statusMessage: string
+	textMessage: string
+	timestamp: number // миллисекунды
+	type: string
+}
 
 // Форматы GREEN-API
 export interface SendMessageResponse {
@@ -83,22 +69,19 @@ export interface Contact {
 	type: string
 }
 
-export interface HistoryMessage {
-	idMessage: string
-	timestamp: number
-	typeMessage: string
-	textMessage?: string
-	senderId?: string
-	senderName?: string
-	chatId?: string
-}
-
 // utils, guards
-export const isNumber = (v: unknown): v is number =>
-	typeof v === 'number' && Number.isFinite(v)
-export const isObject = (v: unknown): v is Record<string, unknown> =>
-	typeof v === 'object' && v !== null && !Array.isArray(v)
-export const isString = (v: unknown): v is string => typeof v === 'string'
+export function assertCredsData(
+	data: Credentials | null,
+): asserts data is Credentials {
+	if (!data) throw new Error('Credentials expected')
+}
+export const isNumber = (val: unknown): val is number =>
+	typeof val === 'number' && Number.isFinite(val)
+export const isObject = (val: unknown): val is Record<string, unknown> =>
+	typeof val === 'object' && val !== null && !Array.isArray(val)
+export const isString = (val: unknown): val is string => typeof val === 'string'
+export const isApiError = (val: unknown): val is ApiError =>
+	isObject(val) && 'message' in val
 
 interface Body {
 	typeWebhook: string
