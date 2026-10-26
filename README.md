@@ -1,4 +1,5 @@
 # react-whatsap-chat (via green-api.com)
+Приложение для отправки и получения сообщений из WhatsApp c помощью сервиса GREEN-API
 
 ## Установка необходимого ПО
 
